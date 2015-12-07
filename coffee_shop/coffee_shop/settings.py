@@ -61,9 +61,14 @@ NEWSPIDER_MODULE = 'coffee_shop.spiders'
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'coffee_shop.pipelines.SomePipeline': 300,
-#}
+# ITEM_PIPELINES = []
+#    'coffee_shop.pipelines.MongoDBPipeline': 300,
+# ]
+
+# MONGODB_SERVER = 'localhost'
+# MONGODB_PORT = 27017
+# MONGODB_DB = 'coffee_shop'
+# MONGODB_COLLECTION = 'number_of_reviews'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
