@@ -24,4 +24,3 @@ class CoffeeShopItem(scrapy.Item):
     fixie = Field()
     rustic = Field()
     artisan = Field()
-
