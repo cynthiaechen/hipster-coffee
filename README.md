@@ -4,11 +4,11 @@ Have you ever wondered which coffee shop in San Francisco is the most hipster? T
 
 ## How to Get Started ##
 
-- Install dependencies with `npm install`
+- [ ] Install dependencies with `npm install`
 
 Populate your database with coffee shop data:
-- Start your database with `mongod`
-- Run `scrapy crawl CoffeeShopSpider` in the coffee_shops directory
+- [ ] Start your database with `mongod`
+- [ ] Run `scrapy crawl CoffeeShopSpider` in the coffee_shops directory
 
 Run the application:
-- Run `npm start` in the root directory of this repo
+- [ ] Run `npm start` in the root directory of this repo
