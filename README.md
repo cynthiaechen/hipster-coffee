@@ -8,6 +8,7 @@ Have you ever wondered which coffee shop in San Francisco is the most hipster? T
 
 Populate your database with coffee shop data:
 - Start your database with `mongod`
-- Go to spiders folder in coffee_shop directory and run `scrapy crawl CoffeeShopSpider`
+- Run `scrapy crawl CoffeeShopSpider` in the coffee_shops directory
 
-- Go to root directory and run `npm start`
+Run the application:
+- Run `npm start` in the root directory of this repo
