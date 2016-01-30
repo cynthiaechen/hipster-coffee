@@ -1,39 +1,47 @@
 from scrapy import Spider
 from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
 from scrapy.http import Request
 from scrapy.selector import Selector
 from coffee_shop.items import CoffeeShopItem
 import urllib
 
-query_words = ['hipster', 'wood', 'natural lighting', 'almond milk', 'pour over', 'single origin', 'macbook', 'glasses', 'fixie', 'rustic', 'artisan']
-# query_words = ['hipster', 'wood', 'almond milk']
+query_words = ['hipster', 'wood', 'natural lighting','almond milk', 'pour over', 'single origin', 'macbook', 'fixie', 'artisan', 'mason jar', 'instagram', 'ironic', 'skinny jeans']
+# query_words = ['hipster', 'wood', 'natural lighting']
+
 
 class ArgSpider(CrawlSpider):
   name = 'CoffeeShopSpider'
+  allowed_domains = ['yelp.com']
 
-  def __init__(self,shop_name=None,*args,**kwargs):
-    super(ArgSpider, self).__init__(*args,**kwargs)
-    self.start_urls = []
-    self.query_urls = []
-    initial_url = 'http://www.yelp.com/biz/{shop_name}-san-francisco'
-    shop_name = shop_name.replace (" ", "-")
-    initial_url = initial_url.format(shop_name=shop_name)
-    self.start_urls.append(initial_url)
-    urlTemplate = initial_url + '?q='
-    for query in query_words:
-        query = urllib.quote(query)
-        url = urlTemplate + query
-        self.query_urls.append(url)
-        url = urlTemplate
-
+  def start_requests(self):
+    # yield Request('http://www.yelp.com/search?find_desc=hipster+coffee+shop&find_loc=San+Francisco/', self.parse)
+    # yield Request('http://www.yelp.com/search?find_desc=hipster+coffee+shop&find_loc=San+Francisco,+CA&start=10', self.parse)
+    yield Request('http://www.yelp.com/search?find_desc=hipster+coffee+shop&find_loc=San+Francisco,+CA&start=20', self.parse)
 
   def parse(self, response):
+    for href in response.xpath('//a[@class="biz-name"]'):
+        link = href.xpath('@href').extract_first()
+        #check if href starts with /biz
+        if link.split('/', 2)[1] == 'biz':
+            url = 'http://www.yelp.com' + link
+            yield Request(url, self.parse_shop_page)
+
+  def parse_shop_page(self, response):
     name = response.xpath('//div[@class="biz-page-header-left"]/h1/text()').extract_first()
     name = name.replace('\n','')
     name = name.strip()
+    name = name.replace(' ', '-')
+    name = name.lower()
     item = CoffeeShopItem()
     item['name'] = name
-    yield Request(self.query_urls.pop(0), callback=self.parse_attributes, meta={'item': item})
+    base_url = response.url.split('?', 1)[0]
+    urlTemplate = base_url + '?q='
+    #loop through each query word and call parse_attributes to scrape data and calculate percentages
+    for query in query_words:
+        query = urllib.quote(query)
+        query_url = urlTemplate + query
+        yield Request(query_url, callback=self.parse_attributes, meta={'item': item})
 
   def parse_attributes(self, response):
     item = response.meta['item']
@@ -48,8 +56,6 @@ class ArgSpider(CrawlSpider):
     attribute = urllib.unquote(attribute)
     attribute = attribute.replace(" ", "_")
     item[attribute] = percentage
-    if self.query_urls:
-        return Request(self.query_urls.pop(0), callback=self.parse_attributes, meta={'item': item})
     return item
 
 
