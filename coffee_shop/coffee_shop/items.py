@@ -11,7 +11,6 @@ from scrapy.item import Item, Field
 
 class CoffeeShopItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
     name = Field()
     hipster = Field()
     wood = Field()
@@ -20,7 +19,9 @@ class CoffeeShopItem(scrapy.Item):
     pour_over = Field()
     single_origin = Field()
     macbook = Field()
-    glasses = Field()
     fixie = Field()
-    rustic = Field()
     artisan = Field()
+    mason_jar = Field()
+    instagram = Field()
+    ironic = Field()
+    skinny_jeans = Field()
