@@ -1,0 +1,21 @@
+{
+  "name": "hipster-coffee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cynthia Chen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "kerberos": "0.0.18",
+    "mongodb": "^2.1.4",
+    "mongojs": "^2.3.0",
+    "mongoose": "^4.3.7",
+    "morgan": "^1.6.1"
+  }
+}
