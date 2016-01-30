@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How Hipster Is This Coffee Shop?</title>
+    <link rel="shortcut icon" href="images/coffee.png"/>
+    <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body ng-app='app'>
+    <img class='logo' src='images/hipster_coffee_logo.png'>
+    <div class='page'>
+      <div ng-controller='ShopsController'>
+        <form>
+          <input type='text' ng-model='name' placeholder='Blue Bottle, Sightglass, etc...' />
+          <button type='submit' ng-click='getShopData()'><img class='icon' src='images/coffee.png'></button>
+        </form>
+        <div class='error' ng-show='errorFlag'><p>{{error}}</p></div>
+        <div class="answer" ng-show="name.toLowerCase() === 'starbucks'"><p>Are you crazy?!? Starbucks isn't hipster! What are you thinking?!?</p></div>
+        <div class="answer" ng-show="name.toLowerCase() === 'peets'"><p>Sorry, Peets isn't hipster...</p></div>
+        <div class='answer' ng-show='flag'>
+          <h2>{{shop.name}}</h2>
+          <p>Hipster: {{shop.hipster}}%</p>
+          <p>Wood: {{shop.wood}}%</p>
+          <p>Natural lighting: {{shop.natural_lighting}}%</p>
+          <p>Almond milk: {{shop.almond_milk}}%</p>
+          <p>Pour over: {{shop.pour_over}}%</p>
+          <p>Single origin: {{shop.single_origin}}%</p>
+          <p>Artisan: {{shop.artisan}}%</p>
+          <p>Macbook: {{shop.macbook}}%</p>
+          <p>Instagram: {{shop.instagram}}%</p>
+          <p>Skinny Jeans: {{shop.skinny_jeans}}%</p>
+          <!-- <p>Glasses: {{shop.glasses}}%</p> -->
+          <p>Ironic: {{shop.ironic}}%</p>
+          <p>Mason jar: {{shop.mason_jar}}%</p>
+          <!-- <p>Cold brew: {{shop.cold_brew}}%</p> -->
+          <p>Fixie: {{shop.fixie}}%</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="services.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

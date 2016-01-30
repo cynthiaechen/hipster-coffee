@@ -1,0 +1,81 @@
+body {
+  background-color: #FFFFFF;
+}
+
+h1 {
+  font-family: 'Wire One', sans-serif;
+  font-size: 100px;
+  text-align: center;
+  margin: 35px auto;
+}
+
+h2 {
+  font-family: 'Wire One', sans-serif;
+  font-size: 60px;
+  text-align: center;
+}
+
+img.logo {
+  display: block;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.page {
+  width: 1150px;
+  margin: 25px auto;
+}
+
+form {
+  padding: 10px 5px;
+  margin: 0 auto;
+  width: 600px;
+  font-family: 'Amatic SC', cursive;
+  font-size: 36px;
+  text-align: center;
+}
+
+input[type='text'] {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: 'Amatic SC', cursive;
+  font-size: 32px;
+  min-width: 300px;
+  padding: 4px 6px;
+  margin-left: 80px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  text-align: center;
+}
+
+button[type='submit'] {
+  background-color: #CC0000;
+  opacity: 0.8;
+  border-radius: 8px;
+  border: 1px solid #999;
+  padding: 5px 8px 9px 8px;
+  margin-left: 15px;
+}
+
+.icon {
+  height: 35px;
+  width: 35px;
+  padding-top: 3px;
+}
+
+.answer {
+  text-align: center;
+}
+
+p {
+  font-family: 'Amatic SC', cursive;
+  font-size: 60px;
+  margin: 0 auto;
+}
+
+.container {
+  float: left;
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
