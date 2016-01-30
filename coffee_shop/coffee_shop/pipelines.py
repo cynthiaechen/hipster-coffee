@@ -28,7 +28,7 @@ class MongoDBPipeline(object):
   def from_crawler(cls, crawler):
     return cls(
       mongo_uri=crawler.settings.get('MONGO_URI'),
-      mongo_db=crawler.settings.get('MONGODB_DATABASE', 'items')
+      mongo_db=crawler.settings.get('MONGODB_DATABASE', 'shops')
     )
   def open_spider(self, spider):
     self.client = pymongo.MongoClient(self.mongo_uri)
@@ -38,11 +38,7 @@ class MongoDBPipeline(object):
     self.client.close()
 
   def process_item(self, item, spider):
-    valid = True
-    for data in item:
-      if not data:
-        valid = False
-        raise DropItem('Missing {0}!'.format(data))
-    if valid:
+    if (len(item) == 14):
+      print('saving to database', dict(item))
       self.db[self.collection_name].insert(dict(item))
       return item
