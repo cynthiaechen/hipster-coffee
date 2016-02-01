@@ -1,3 +1,4 @@
+// var env = require('./process.env');
 var path = require('path');
 var mongodb = require('mongodb');
 var express = require('express');
@@ -8,11 +9,13 @@ var parser = require('body-parser');
 
 //database connection
 var MongoClient = require('mongodb').MongoClient;
+// var uri = process.env.MONGOLAB_URI;
+var uri = ENV['PROD_MONGODB'];
 var db;
 
 //initialize db connection
 
-MongoClient.connect('mongodb://localhost:27017/shops', function(err, database) {
+MongoClient.connect(uri, function(err, database) {
   if (err) {
     console.error(err);
   } else {
@@ -25,7 +28,7 @@ MongoClient.connect('mongodb://localhost:27017/shops', function(err, database) {
   app.use(express.static(path.resolve(__dirname, '..', 'client')));
 
   app.listen(port);
-  console.log('Listening to port 3000...');
+  console.log('Listening to port ' + port + '...');
 });
 
 
@@ -37,6 +40,8 @@ app.get('/shops/:name/data', function(req, res, next) {
     }
     if (data) {
       res.json(data);
+    } else {
+      res.sendStatus(204);
     }
   });
 });
