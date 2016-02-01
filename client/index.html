@@ -12,13 +12,14 @@
     <div class='page'>
       <div ng-controller='ShopsController'>
         <form>
-          <input type='text' ng-model='name' placeholder='Blue Bottle, Sightglass, etc...' />
+          <input type='text' ng-model='name' ng-keypress='resetFlags()' placeholder='Blue Bottle, Sightglass, etc...' />
           <button type='submit' ng-click='getShopData()'><img class='icon' src='images/coffee.png'></button>
         </form>
-        <div class='error' ng-show='errorFlag'><p>{{error}}</p></div>
-        <div class="answer" ng-show="name.toLowerCase() === 'starbucks'"><p>Are you crazy?!? Starbucks isn't hipster! What are you thinking?!?</p></div>
-        <div class="answer" ng-show="name.toLowerCase() === 'peets'"><p>Sorry, Peets isn't hipster...</p></div>
-        <div class='answer' ng-show='flag'>
+        <div class='response error' ng-show='errorFlag'><p>{{error_text}}</p></div>
+        <div class='response loading' ng-show='loadFlag'><p>Calculating the hipster-ness...</p></div>
+        <div class="response not-hipster" ng-if="name.toLowerCase() === 'starbucks'"><p>Are you crazy?!? Starbucks isn't hipster! What are you thinking?!?</p></div>
+        <div class="response not-hipster" ng-show="name.toLowerCase() === 'peets'"><p>Sorry, Peets isn't hipster...</p></div>
+        <div class='response valid' ng-show='flag'>
           <h2>{{shop.name}}</h2>
           <p>Hipster: {{shop.hipster}}%</p>
           <p>Wood: {{shop.wood}}%</p>
