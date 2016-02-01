@@ -6,7 +6,11 @@ angular.module('app.services', [])
       url: '/shops/' + name + '/data'
     })
     .then(function(resp) {
-      return resp.data;
+      if (resp.status === 200) {
+        return resp.data;
+      } else {
+        return 'Sorry, we cannot find that coffee shop... Maybe it\'s too hipster...';
+      }
     });
   };
 
