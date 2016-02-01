@@ -1,18 +1,11 @@
 body {
   background-color: #FFFFFF;
-}
-
-h1 {
-  font-family: 'Wire One', sans-serif;
-  font-size: 100px;
   text-align: center;
-  margin: 35px auto;
 }
 
 h2 {
   font-family: 'Wire One', sans-serif;
   font-size: 60px;
-  text-align: center;
 }
 
 img.logo {
@@ -22,14 +15,14 @@ img.logo {
 }
 
 .page {
-  width: 1150px;
-  margin: 25px auto;
+  width: 100%;
+  margin: 10px auto;
 }
 
 form {
   padding: 10px 5px;
   margin: 0 auto;
-  width: 600px;
+  width: 100%;
   font-family: 'Amatic SC', cursive;
   font-size: 36px;
   text-align: center;
@@ -63,8 +56,17 @@ button[type='submit'] {
   padding-top: 3px;
 }
 
-.answer {
-  text-align: center;
+.response {
+  width: 100%;
+  padding-top: 25px;
+}
+
+.response.error {
+  color: red;
+}
+
+.response.valid {
+  padding-top: 0;
 }
 
 p {
@@ -72,10 +74,3 @@ p {
   font-size: 60px;
   margin: 0 auto;
 }
-
-.container {
-  float: left;
-  margin-left: 15px;
-  margin-bottom: 30px;
-}
-
