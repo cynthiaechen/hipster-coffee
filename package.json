@@ -1,12 +1,15 @@
 {
   "name": "hipster-coffee",
   "version": "1.0.0",
-  "description": "",
+  "description": "This web app determines how hipster a coffee shop is.",
   "main": "server.js",
   "scripts": {
     "start": "node ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "hipster", "angular", "express", "mongoDB", "heroku"
+  ],
   "author": "Cynthia Chen",
   "license": "ISC",
   "dependencies": {
@@ -17,5 +20,8 @@
     "mongojs": "^2.3.0",
     "mongoose": "^4.3.7",
     "morgan": "^1.6.1"
+  },
+  "engines": {
+    "node": "5.4.1"
   }
 }
